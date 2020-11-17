@@ -1,17 +1,36 @@
-import React from "react";
+import React, { Component }  from "react";
 
-function DogCard() {
-  return (
-    <div className="card">
-      <span className="content">
-        <h2 >{/*Dog name goes here*/}</h2>
-        <img alt="" src={""} />
-      </span>
-      <span className="bark">
-        <button>Bark</button>
-      </span>
-    </div>
-  );
+class DogCard extends Component {
+
+ 
+  state = {
+    clicked: false
+  }
+  dogClickHandler = () => {
+    this.props.clickHandler(this.props.dog)
+  }
+
+  
+  
+  
+  render() {
+    return (
+      <div className="card">
+        <span className="content">
+          <h2 >{this.props.dog.name}</h2>
+          <img alt="dog" src={this.props.dog.img} />
+        </span>
+        <span className="bark">
+          <button onClick={this.dogClickHandler}>Favorite</button>
+          
+        </span>
+      </div>
+    );
+  }
+  
+
 }
+
+
 
 export default DogCard;
